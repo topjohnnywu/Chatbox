@@ -38,7 +38,7 @@ app.post('/api/chat', (req, res) => {
 });
 
 // Serve production static assets from Vite build output
-const distPath = path.resolve(__dirname, 'dist');
+const distPath = path.resolve(import.meta.dirname, 'dist');
 app.use(express.static(distPath));
 
 // Fallback to index.html for Single-Page App routing
