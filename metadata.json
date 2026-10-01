@@ -1,0 +1,6 @@
+{
+  "name": "NexusAI Studio - Universal AI Assistant",
+  "description": "Production-ready, Claude-inspired full-stack AI chat assistant with Bring-Your-Own-Key (BYOK) architecture, streaming responses, and responsive cross-platform design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

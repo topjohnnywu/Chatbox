@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nexusai-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://nexususer:nexuspassword@postgres:5432/nexusai?schema=public
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: nexusai-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nexususer
+      POSTGRES_PASSWORD: nexuspassword
+      POSTGRES_DB: nexusai
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
